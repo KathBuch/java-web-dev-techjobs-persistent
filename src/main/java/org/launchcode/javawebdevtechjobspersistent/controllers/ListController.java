@@ -24,6 +24,12 @@ public class ListController {
     @Autowired
     private JobRepository jobRepository;
 
+    @Autowired
+    private SkillRepository skillRepository;
+
+    @Autowired
+    private EmployerRepository employerRepository;
+
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController () {
@@ -36,8 +42,8 @@ public class ListController {
 
     @RequestMapping("")
     public String list(Model model) {
-//        model.addAttribute("employers", skillRepository.findAll());
-//        model.addAttribute("employers", employerRepository.findAll());
+        model.addAttribute("skills", skillRepository.findAll());
+        model.addAttribute("employers", employerRepository.findAll());
         return "list";
     }
 
